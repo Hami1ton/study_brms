@@ -1,0 +1,5 @@
+
+rule "Hello Child"
+    then
+        System.out.println( "Hello World");
+end
