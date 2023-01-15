@@ -1,5 +1,8 @@
 
 ## Drools関連
+- kie blog
+https://blog.kie.org/
+
 - Drools Documentation
 https://www.drools.org/learn/documentation.html
 
@@ -7,6 +10,9 @@ https://www.drools.org/learn/documentation.html
 https://rheb.hatenablog.com/archive/category/Drools
 
 
+## Progress Corticon関連
 
+- Corticon Tech コラム
+https://www.ashisuto.co.jp/product/category/brms/progress_corticon/column/#tab
 
 
