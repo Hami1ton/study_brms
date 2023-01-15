@@ -17,4 +17,7 @@ https://docs.drools.org/8.32.0.Final/drools-docs/docs-website/drools/language-re
 - Corticon Tech コラム
 https://www.ashisuto.co.jp/product/category/brms/progress_corticon/column/#tab
 
+## Red Hat Decision Manager
 
+- Red Hat Decision Manager のデシジョンエンジン
+https://access.redhat.com/documentation/ja-jp/red_hat_decision_manager/7.7/html-single/decision_engine_in_red_hat_decision_manager/index
