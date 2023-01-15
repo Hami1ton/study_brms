@@ -22,4 +22,9 @@ public class Drink {
         this.charge = charge;
     }
 
+    @Override
+    public String toString() {
+        return "name: " + name + ", " + "charge: " + charge;
+    }
+
 }
