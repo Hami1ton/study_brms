@@ -1,5 +1,5 @@
-import Person
-import Drink
+import org.example.Person
+import org.example.Drink
 
 rule "Child"
     when
