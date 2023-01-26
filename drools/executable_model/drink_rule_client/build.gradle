@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Drools
+    implementation group: 'org.kie', name: 'kie-ci', version: '7.59.0.Final'
+
+    // logging
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.32'
+
+}
