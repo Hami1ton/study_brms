@@ -2,8 +2,12 @@ package org.example;
 
 import org.kie.api.KieServices;
 import org.kie.api.builder.ReleaseId;
+import org.kie.api.command.Command;
 import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.StatelessKieSession;
+import org.kie.internal.command.CommandFactory;
+
+import java.util.Arrays;
 
 public class Main {
 
@@ -12,23 +16,19 @@ public class Main {
         // set up
         var person = new Person();
         person.setName("Taro");
-        person.setAge(18);
+        person.setAge(22);
         var drink = new Drink();
 
         KieServices ks = KieServices.Factory.get();
         ReleaseId releaseId = ks.newReleaseId("org.example", "drink_rule_kjar", "0.0.1-SNAPSHOT");
-        KieContainer kcontainer = ks.newKieContainer(releaseId);
-        KieSession kieSession = kcontainer.newKieSession();
-        kieSession.insert(person);
-        kieSession.insert(drink);
+        KieContainer kieContainer = ks.newKieContainer(releaseId);
+        StatelessKieSession kieSession = kieContainer.newStatelessKieSession();
 
-        // exectute rule
-        kieSession.fireAllRules();
+        // execute
+        Command insertElementsCommand = CommandFactory.newInsertElements(Arrays.asList(person, drink));
+        kieSession.execute(insertElementsCommand);
 
         System.out.println(drink);
-
-        // dispose
-        kieSession.dispose();
 
     }
 }

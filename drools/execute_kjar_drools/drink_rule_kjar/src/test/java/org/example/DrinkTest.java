@@ -1,46 +1,44 @@
 package org.example;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.kie.api.KieServices;
+import org.kie.api.command.Command;
 import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.StatelessKieSession;
+import org.kie.internal.command.CommandFactory;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DrinkTest {
 
-    KieSession kieSession;
+    KieContainer kieContainer;
 
     @BeforeEach
     void initKieSession() {
         KieServices ks = KieServices.Factory.get();
-        KieContainer kieContainer = ks.getKieClasspathContainer();
-        kieSession = kieContainer.newKieSession();
-    }
+        kieContainer = ks.getKieClasspathContainer();
 
-    @AfterEach
-    void disposeKieSession() {
-        kieSession.dispose();
     }
 
     @Test
     public void test_子供はジュースのみ() {
 
         // set up
+        StatelessKieSession kieSession = kieContainer.newStatelessKieSession();
+
         var person = new Person();
         person.setName("Hanako");
         person.setAge(19);
         var drink = new Drink();
-        kieSession.insert(person);
-        kieSession.insert(drink);
+        Command insertElementsCommand = CommandFactory.newInsertElements(Arrays.asList(person, drink));
 
         // execute
-        int count = kieSession.fireAllRules();
+        kieSession.execute(insertElementsCommand);
 
         // assert
-        assertEquals(count, 1);
         assertEquals(drink.getName(), "Orange Juice");
         assertEquals(drink.getCharge(), 100);
 
@@ -48,20 +46,19 @@ public class DrinkTest {
 
     @Test
     public void test_大人はビールがのめる() {
-
         // set up
+        StatelessKieSession kieSession = kieContainer.newStatelessKieSession();
+
         var person = new Person();
         person.setName("Taro");
         person.setAge(21);
         var drink = new Drink();
-        kieSession.insert(person);
-        kieSession.insert(drink);
+        Command insertElementsCommand = CommandFactory.newInsertElements(Arrays.asList(person, drink));
 
         // execute
-        int count = kieSession.fireAllRules();
+        kieSession.execute(insertElementsCommand);
 
         // assert
-        assertEquals(count, 1);
         assertEquals(drink.getName(), "Beer");
         assertEquals(drink.getCharge(), 200);
 

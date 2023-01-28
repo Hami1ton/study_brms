@@ -8,12 +8,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>drink_rule_kjar</name>
 	<description>Demo project for KJAR</description>
+	<packaging>kjar</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<drools.version>7.59.0.Final</drools.version>
 	</properties>
 
 	<dependencies>
@@ -21,24 +23,14 @@
 			<groupId>org.drools</groupId>
 			<artifactId>drools-compiler</artifactId>
 			<version>7.59.0.Final</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-mvel</artifactId>
 			<version>7.59.0.Final</version>
+			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.32</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-nop</artifactId>
-			<version>1.7.5</version>
-			<scope>compile</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
@@ -57,15 +49,10 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19.1</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.junit.platform</groupId>
-						<artifactId>junit-platform-surefire-provider</artifactId>
-						<version>1.1.0</version>
-					</dependency>
-				</dependencies>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-maven-plugin</artifactId>
+				<version>${drools.version}</version>
+				<extensions>true</extensions>
 			</plugin>
 		</plugins>
 	</build>
