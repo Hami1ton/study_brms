@@ -1,59 +1,24 @@
 import org.example.Person
 import org.example.Drink
 
+// こちらの定義ではコンパイルはとおる
+
+query query_ok(String $age1, String $age2, String $age3, String $age4, String $age5, String $age6, String $age7, String $age8, String $age9, String $age10)
+    // 10個の引数をもつ
+end
+
+
+// こちらの定義ではコンパイルエラーとなる
+
+// query query_ng(String $age1, String $age2, String $age3, String $age4, String $age5, String $age6, String $age7, String $age8, String $age9, String $age10, String $age11)
+    // 11個の引数をもつ
+// end
+
+
 rule "Child"
     when
         $person : Person( age != 20)
         $drink : Drink()
-        $person_1 : Person( age != 20)
-        $person_2 : Person( age != 20)
-        $person_3 : Person( age != 20)
-        $person_4 : Person( age != 20)
-        $person_5 : Person( age != 20)
-        $person_6 : Person( age != 20)
-        $person_7 : Person( age != 20)
-        $person_8 : Person( age != 20)
-        $person_9 : Person( age != 20)
-        $person_10 : Person( age != 20)
-        $person_11 : Person( age != 20)
-        $person_12 : Person( age != 20)
-        $person_13 : Person( age != 20)
-        $person_14 : Person( age != 20)
-        $person_15 : Person( age != 20)
-        $person_16 : Person( age != 20)
-        $person_17 : Person( age != 20)
-        $person_18 : Person( age != 20)
-        $person_19 : Person( age != 20)
-        $person_20 : Person( age != 20)
-        $person_21 : Person( age != 20)
-        $person_22 : Person( age != 20)
-        $person_23 : Person( age != 20)
-        $person_24 : Person( age != 20)
-        $person_25 : Person( age != 20)
     then
         $drink.setName( "Orange Juice" );
-        // こちらの引数ではコンパイルはとおる
-        $drink.setCharge( func_ok($person_1, $person_2, $person_3, $person_4, $person_5, $person_6, $person_7, $person_8, $person_9, $person_10
-            , $person_11, $person_12, $person_13, $person_14, $person_15, $person_16, $person_17, $person_18, $person_19, $person_20
-           , $person_21, $person_22, $person_23
-        ));
-        // こちらの引数ではコンパイルエラーとなる
-        // $drink.setCharge( func_ng($person_1, $person_2, $person_3, $person_4, $person_5, $person_6, $person_7, $person_8, $person_9, $person_10
-        //     , $person_11, $person_12, $person_13, $person_14, $person_15, $person_16, $person_17, $person_18, $person_19, $person_20
-        //    , $person_21, $person_22, $person_23, $person_24, $person_25
-        // ));
-
 end
-
-function int func_ok(Person i_1, Person i_2, Person i_3, Person i_4, Person i_5, Person i_6, Person i_7, Person i_8, Person i_9, Person i_10
-    , Person i_11, Person i_12, Person i_13, Person i_14, Person i_15, Person i_16, Person i_17, Person i_18, Person i_19, Person i_20
-    , Person i_21, Person i_22, Person i_23) {
-    return 1;
-}
-
-
-function int func_ng(Person i_1, Person i_2, Person i_3, Person i_4, Person i_5, Person i_6, Person i_7, Person i_8, Person i_9, Person i_10
-    , Person i_11, Person i_12, Person i_13, Person i_14, Person i_15, Person i_16, Person i_17, Person i_18, Person i_19, Person i_20
-    , Person i_21, Person i_22, Person i_23, Person i_24, Person i_25) {
-    return 1;
-}
