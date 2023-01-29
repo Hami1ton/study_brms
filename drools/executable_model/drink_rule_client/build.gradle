@@ -12,6 +12,7 @@ repositories {
 dependencies {
     // Drools
     implementation group: 'org.kie', name: 'kie-ci', version: '7.59.0.Final'
+    // CanonicalKieModuleProviderでKieModuleを作るために必要
     implementation group: 'org.drools', name: 'drools-model-compiler', version: '7.59.0.Final'
 
     // logging
