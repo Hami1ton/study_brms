@@ -1,4 +1,8 @@
 
+## DMN 
+
+- https://www.trisotech.com/what-is-new-in-dmn-1-4/
+
 ## Drools関連 
 - [Drools Documentation v7](https://docs.drools.org/7.59.0.Final/drools-docs/html_single/index.html)
 - 関連ブログ
