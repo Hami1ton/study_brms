@@ -14,6 +14,11 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+
+	// drools
+	implementation group: 'org.drools', name: 'drools-compiler', version: '7.59.0.Final'
+	implementation group: 'org.drools', name: 'drools-mvel', version: '7.59.0.Final'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
