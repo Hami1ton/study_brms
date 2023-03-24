@@ -13,11 +13,14 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	// drools
 	implementation group: 'org.drools', name: 'drools-compiler', version: '7.59.0.Final'
 	implementation group: 'org.drools', name: 'drools-mvel', version: '7.59.0.Final'
+
+	// openapi
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.0.4'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
