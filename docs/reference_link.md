@@ -5,6 +5,7 @@
 
 ## Drools関連 
 - [Drools Documentation v7](https://docs.drools.org/7.59.0.Final/drools-docs/html_single/index.html)
+- [Drools Documentation v8](https://docs.drools.org/8.39.0.Final/drools-docs/docs-website/drools/introduction/index.html)
 - 関連ブログ
     - [kie blog](https://blog.kie.org/)
     - [Redhat](https://rheb.hatenablog.com/archive/category/Drools)
