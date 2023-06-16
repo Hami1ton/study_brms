@@ -9,9 +9,13 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    droolsVersion = '8.39.0.Final'
+}
+
 dependencies {
     // drools
-    implementation group: 'org.drools', name: 'drools-mvel', version: '8.39.0.Final'
+    implementation group: 'org.drools', name: 'drools-mvel', version: droolsVersion
     implementation group: 'org.drools', name: 'drools-xml-support', version: '8.39.0.Final'
 
     // logging
