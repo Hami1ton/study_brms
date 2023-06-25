@@ -7,5 +7,5 @@ maven repository のKJARを読み込んで実行するサンプル
 - 事前に[drink_rule_kjar](./../drink_rule_kjar/)プロジェクトで以下コマンドを実行しておく
 
 ```
-./mvnw clean install
+./mvnw clean install -DgenerateModel=NO
 ```
