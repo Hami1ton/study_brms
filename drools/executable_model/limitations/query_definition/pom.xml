@@ -14,13 +14,19 @@
 		<java.version>17</java.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<drools.version>7.59.0.Final</drools.version>
+		<drools.version>8.39.0.Final</drools.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.drools</groupId>
-			<artifactId>drools-model-compiler</artifactId>
+			<artifactId>drools-engine</artifactId>
+			<version>${drools.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-xml-support</artifactId>
 			<version>${drools.version}</version>
 			<scope>test</scope>
 		</dependency>
