@@ -1,4 +1,6 @@
-package org.example;
+package org.example.kiescannerspring.facts;
+
+import java.lang.reflect.Field;
 
 public class Drink {
 

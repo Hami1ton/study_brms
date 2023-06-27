@@ -1,4 +1,4 @@
-package org.example;
+package org.example.kiescannerspring.facts;
 
 public class Person {
 
