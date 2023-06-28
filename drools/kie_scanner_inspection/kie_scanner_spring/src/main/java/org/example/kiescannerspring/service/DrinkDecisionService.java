@@ -25,12 +25,10 @@ public class DrinkDecisionService {
     ReleaseId releaseId = ks.newReleaseId("org.example", "drink_rule_kjar", "0.0.1-SNAPSHOT");
 
     KieContainer kieContainer;
-    private Object drinkObj;
 
     @PostConstruct
     void initKieContainer() {
         this.kieContainer = ks.newKieContainer(releaseId);
-
         KieScanner kScanner = ks.newKieScanner(this.kieContainer);
         kScanner.start(10000L);
     }
@@ -40,7 +38,7 @@ public class DrinkDecisionService {
         StatelessKieSession kieSession = kieContainer.newStatelessKieSession();
 
         // set up
-        drinkObj = createDrinkFact(kieContainer);
+        Object drinkObj = createDrinkFact(kieContainer);
         Object personObj = createPersonFact(kieContainer, person);
 
         // execute

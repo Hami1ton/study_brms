@@ -1,6 +1,5 @@
 # kie_scanner_spring
 
-
 ## 概要
 
 - Drools × Spring boot
@@ -8,6 +7,7 @@
 
 ## 環境
 
+- jdk version 17
 - spring boot 3.0.2
 - drools v8
 
