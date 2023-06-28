@@ -1,5 +1,6 @@
 package org.example.kiescannerspring.service;
 
+import jakarta.annotation.PostConstruct;
 import org.example.kiescannerspring.facts.Drink;
 import org.example.kiescannerspring.facts.Person;
 import org.kie.api.KieServices;
@@ -23,10 +24,11 @@ public class DrinkDecisionService {
 
     ReleaseId releaseId = ks.newReleaseId("org.example", "drink_rule_kjar", "0.0.1-SNAPSHOT");
 
-    KieContainer kieContainer = ks.newKieContainer(releaseId);;
+    KieContainer kieContainer;
     private Object drinkObj;
 
-    void DrinkDecisionService() {
+    @PostConstruct
+    void initKieContainer() {
         this.kieContainer = ks.newKieContainer(releaseId);
 
         KieScanner kScanner = ks.newKieScanner(this.kieContainer);
