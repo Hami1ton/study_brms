@@ -1,10 +1,13 @@
 import org.example.drlgroupby.StudentTestScore
 
-rule "Calculate Overall Average"
+rule "Calculate overall average"
     when
         accumulate( StudentTestScore( $score : testScore );
                         $avg : average( $score ) )
     then
-        System.out.println($avg);
+        System.out.println("Overall Average: " + $avg);
 end
 
+// 以下のように";"が余分にあると構文エラーになるので注意
+// accumulate( StudentTestScore( $score : testScore );
+//                 $avg : average( $score ); )

@@ -7,11 +7,9 @@ import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AccumulateSampleTest {
+public class GroupbySampleTest {
 
     KieSession kieSession;
 
@@ -28,15 +26,17 @@ public class AccumulateSampleTest {
     }
 
     @Test
-    public void test_学年全体の平均点を計算する() {
+    public void test_平均点が80点超のクラスを抽出する() {
 
         // set up
         var taro = new StudentTestScore("Taro", "A", 100);
         var jiro = new StudentTestScore("Jiro", "A", 75);
-        var saburo = new StudentTestScore("Saburo", "B", 70);
+        var saburo = new StudentTestScore("Saburo", "B", 89);
+        var shiro = new StudentTestScore("shiro", "B", 60);
         kieSession.insert(taro);
         kieSession.insert(jiro);
         kieSession.insert(saburo);
+        kieSession.insert(shiro);
 
         // execute
         int count = kieSession.fireAllRules();

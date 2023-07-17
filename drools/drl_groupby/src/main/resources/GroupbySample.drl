@@ -1,0 +1,13 @@
+import org.example.drlgroupby.StudentTestScore
+
+rule "Filter classes whose average is greater than 80"
+    when
+        groupby(
+            $s : StudentTestScore( $score : testScore );
+            $group : $s.getStudentClass();
+            $ave : average($score);
+            $ave > 80)
+    then
+        System.out.println("Class " + $group + " average is greater than 80.");
+end
+
