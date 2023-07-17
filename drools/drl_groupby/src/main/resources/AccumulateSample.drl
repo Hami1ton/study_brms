@@ -2,7 +2,6 @@ import org.example.drlgroupby.StudentTestScore
 
 rule "Calculate Overall Average"
     when
-        $ss : StudentTestScore()
         accumulate( StudentTestScore( $score : testScore );
                         $avg : average( $score ) )
     then
