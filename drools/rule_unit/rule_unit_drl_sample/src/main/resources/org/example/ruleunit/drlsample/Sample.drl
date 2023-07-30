@@ -1,0 +1,24 @@
+package org.example.ruleunit.drlsample;
+unit DrinkRuleUnit;
+
+import org.example.ruleunit.drlsample.Person;
+import org.example.ruleunit.drlsample.Drink;
+import org.example.ruleunit.drlsample.DrinkRuleUnit;
+
+rule "Child"
+    when
+        $person : Person( age < 20 )
+        $drink : Drink()
+    then
+        $drink.setName( "Orange Juice" );
+        $drink.setCharge( 100 );
+end
+
+rule "Adult"
+    when
+        $person : Person( age >= 20 )
+        $drink : Drink()
+    then
+        $drink.setName( "Beer" );
+        $drink.setCharge( 200 );
+end
