@@ -1,0 +1,10 @@
+import org.example.ruleunit.drlsample.StudentTestScore
+
+rule "Calculate overall average"
+    when
+        accumulate( StudentTestScore( $score : testScore );
+        $avg : average( $score ) )
+    then
+        System.out.println("Overall Average: " + $avg);
+end
+
