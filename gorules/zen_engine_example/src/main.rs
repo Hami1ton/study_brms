@@ -8,11 +8,13 @@ async fn main() {
 }
 
 async fn evaluate() {
+    // load DMN
     let decision_content: DecisionContent = serde_json::from_str(include_str!("DrinkRule.json")).unwrap();
     
     let engine = DecisionEngine::default();
     let decision = engine.create_decision(decision_content.into());
   
+    // execute rule
     let result = decision.evaluate(&json!(
         {
             "person": {
