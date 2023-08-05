@@ -8,7 +8,7 @@ async fn main() {
 }
 
 async fn evaluate() {
-    // load DMN
+    // load JDM
     let decision_content: DecisionContent = serde_json::from_str(include_str!("DrinkRule.json")).unwrap();
     
     let engine = DecisionEngine::default();
