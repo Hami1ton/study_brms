@@ -1,5 +1,8 @@
 package org.example.ruleunit.drlsample;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.drools.ruleunits.api.DataSource;
 import org.drools.ruleunits.api.DataStore;
 import org.drools.ruleunits.api.RuleUnitData;
@@ -8,15 +11,14 @@ public class DrinkRuleUnit implements RuleUnitData {
     
     private DataStore<Person> persons;
 
-    private DataStore<Drink> drinks;
+    private List<Drink> drinkList = new ArrayList<>();
 
     public DrinkRuleUnit() {
-        this(DataSource.createStore(), DataSource.createStore());
+        this(DataSource.createStore());
     }
 
-    public DrinkRuleUnit(DataStore<Person> persons, DataStore<Drink> drinks) {
+    public DrinkRuleUnit(DataStore<Person> persons) {
         this.persons = persons;
-        this.drinks = drinks;
     }
 
     public void setPersons(DataStore<Person> persons) {
@@ -27,12 +29,8 @@ public class DrinkRuleUnit implements RuleUnitData {
         return persons;
     }
 
-    public void setDrinks(DataStore<Drink> drinks) {
-        this.drinks = drinks;
-    }
-
-    public DataStore<Drink> getDrinks() {
-        return drinks;
+    public List<Drink> getDrinkList() {
+        return drinkList;
     }
    
 }

@@ -1,44 +1,26 @@
 package org.example.ruleunit.drlsample;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.kie.api.KieServices;
-import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.drools.ruleunits.api.RuleUnitInstance;
+import org.drools.ruleunits.api.RuleUnitProvider;
 
 public class SampleTest {
-
-    KieSession kieSession;
-
-    @BeforeEach
-    void initKieSession() {
-        KieServices ks = KieServices.Factory.get();
-        KieContainer kieContainer = ks.getKieClasspathContainer();
-        kieSession = kieContainer.newKieSession();
-    }
-
-    @AfterEach
-    void disposeKieSession() {
-        kieSession.dispose();
-    }
-
+    
     @Test
     public void test_ドリンクの決定() {
+        DrinkRuleUnit drinkRuleUnit = new DrinkRuleUnit();
+        RuleUnitInstance<DrinkRuleUnit> instance = RuleUnitProvider.get().createRuleUnitInstance(drinkRuleUnit);
 
-        // set up
-        var taro = new Person("Taro", 20);
-        var drink = new Drink();
-        kieSession.insert(taro);
-        kieSession.insert(drink);
+        var person = new Person("Taro", 20);
+        drinkRuleUnit.getPersons().add(person);
 
-        // execute
-        kieSession.fireAllRules();
+        instance.fire();
 
         // assert
+        var drink = drinkRuleUnit.getDrinkList().get(0);
         assertEquals("Beer", drink.getName());
+
+        instance.close();
     }
 }

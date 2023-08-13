@@ -7,6 +7,11 @@ public class Drink {
 
     private int charge;
 
+    public Drink(String name, int charge) {
+        this.name = name;
+        this.charge = charge;
+    }
+
     public String getName() {
         return name;
     }
