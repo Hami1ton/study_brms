@@ -1,9 +1,6 @@
 package org.example.ruleunit.drlsample;
 unit DrinkRuleUnit;
 
-import org.example.ruleunit.drlsample.Person;
-import org.example.ruleunit.drlsample.Drink;
-
 rule "Child"
     when
         /persons[ age < 20 ]

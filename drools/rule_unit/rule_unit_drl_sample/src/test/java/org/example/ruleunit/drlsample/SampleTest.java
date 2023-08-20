@@ -15,6 +15,7 @@ public class SampleTest {
         var person = new Person("Taro", 20);
         drinkRuleUnit.getPersons().add(person);
 
+        // execute rule 
         instance.fire();
 
         // assert
