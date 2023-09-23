@@ -1,9 +1,15 @@
 package org.example.integratewithopenai.unstructuredinput.ruleunit;
 unit PriorityRuleUnit;
 
+
 rule "Any"
     when
+        /customer[ contractPeriod < 10 ];
+        /inquiryCategory[ value == "要望" ];
     then
-        System.out.println("あああ");
+        priority.set(new Priority(2));
 end
 
+query FindPriority
+    $p: /priority
+end

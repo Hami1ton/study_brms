@@ -1,35 +1,40 @@
 package org.example.integratewithopenai.unstructuredinput.ruleunit;
 
-import org.drools.ruleunits.api.DataStore;
+import org.drools.ruleunits.api.DataStream;
 import org.drools.ruleunits.api.RuleUnitData;
+import org.drools.ruleunits.api.SingletonStore;
 
 
 public class PriorityRuleUnit implements RuleUnitData {
     
-    private DataStore<Customer> customer;
+    private DataStream<Customer> customer;
 
-    private DataStore<InquiryCategory> inquiryCategory;
+    private DataStream<InquiryCategory> inquiryCategory;
 
-    private Priority priority = new Priority(0);
+    private SingletonStore<Priority> priority;
 
-    public void setCustomer(DataStore<Customer> customer) {
+    public void setCustomer(DataStream<Customer> customer) {
         this.customer = customer;
     }
 
-    public DataStore<Customer> getCustomer() {
+    public DataStream<Customer> getCustomer() {
         return customer;
     }
 
-    public void setInquiryCategory(DataStore<InquiryCategory> inquiryCategory) {
+    public void setInquiryCategory(DataStream<InquiryCategory> inquiryCategory) {
         this.inquiryCategory = inquiryCategory;
     }
 
-    public DataStore<InquiryCategory> getInquiryCategory() {
+    public DataStream<InquiryCategory> getInquiryCategory() {
         return inquiryCategory;
     }
 
-    public Priority getPriority() {
+    public void setPriority(SingletonStore<Priority> priority) {
+        this.priority = priority;
+    }
+
+    public SingletonStore<Priority> getPriority() {
         return priority;
     }
-   
+
 }
