@@ -1,8 +1,9 @@
-# rule_unit_drl_sample
+# unstructured_input
 
-Rule Unitのサンプルアプリ
+Integtration drools with OpenAI API 
 
-## 環境
+
+## env
 
 - jdk 17
 - drools 8.41.0.Final

@@ -1,0 +1,9 @@
+package org.example.integratewithopenai.unstructuredinput.ruleunit;
+unit PriorityRuleUnit;
+
+rule "Any"
+    when
+    then
+        System.out.println("あああ");
+end
+
