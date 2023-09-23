@@ -5,9 +5,8 @@ unit PriorityRuleUnit;
 rule "Any"
     when
         /customer[ contractPeriod < 10 ];
-        /inquiryCategory[ value == "要望" ];
+        /inquiryCategory[ value.equals("A") ];
     then
-        System.out.println("ooooo");
         priority.set(new Priority(2));
 end
 
@@ -15,7 +14,7 @@ end
 rule "Hello"
     when
         /customer[ contractPeriod < 10 ];
-        /inquiryCategory[ value.equals("要望") ];
+        /inquiryCategory[ value.equals("B") ];
     then
         System.out.println("Hello");
 end

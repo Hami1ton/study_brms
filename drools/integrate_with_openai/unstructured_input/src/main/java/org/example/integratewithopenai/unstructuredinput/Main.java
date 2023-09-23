@@ -12,9 +12,10 @@ public class Main {
         // decide the priority 
         DecisionService ds = new DecisionService();
         var customer = new Customer("Taro", 1);
-        var category = new InquiryCategory("要望");
-        ds.decidePriority(customer, category);
+        var category = new InquiryCategory("A");
+        var priority = ds.decidePriority(customer, category);
 
+        System.out.println(priority);
 
     }
     

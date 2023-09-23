@@ -16,7 +16,7 @@ public class PriorityRuleUnitTest {
         var customer = new Customer("Taro", 1);
         priorityRuleUnit.getCustomer().append(customer);
 
-        var category = new InquiryCategory("要望");
+        var category = new InquiryCategory("A");
         priorityRuleUnit.getInquiryCategory().append(category);
 
         // execute rule 

@@ -20,13 +20,14 @@ public class DecisionService {
         instance.fire();
 
         // get result by query
+        Priority priority = null;
         var queryResult = instance.executeQuery("FindPriority").toList();
-        System.out.println(queryResult);
-        // Priority priority = (Priority) queryResult.get("$p");
-
+        if (queryResult.size() == 1) {
+            priority = (Priority) queryResult.get(0).get("$p");
+        }
         instance.close();
 
-        return null;
+        return priority;
     }
     
 }
