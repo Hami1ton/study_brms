@@ -27,7 +27,7 @@ public class PriorityRuleUnitTest {
         Priority priority = (Priority) queryResult.get("$p");
 
         // assert
-        assertEquals(2, priority.getValue());
+        assertEquals(2, priority.value());
 
         instance.close();
     }
