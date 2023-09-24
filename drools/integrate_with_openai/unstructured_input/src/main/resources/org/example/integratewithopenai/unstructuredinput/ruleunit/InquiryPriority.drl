@@ -2,21 +2,77 @@ package org.example.integratewithopenai.unstructuredinput.ruleunit;
 unit PriorityRuleUnit;
 
 
-rule "Any"
+rule "長期顧客_要望"
     when
-        /customer[ contractPeriod < 10 ];
+        /customer[ contractPeriod >= 5 ];
         /inquiryCategory[ value.equals("A") ];
     then
         priority.set(new Priority(2));
 end
 
-
-rule "Hello"
+rule "長期顧客_質問"
     when
-        /customer[ contractPeriod < 10 ];
+        /customer[ contractPeriod >= 5 ];
         /inquiryCategory[ value.equals("B") ];
     then
-        System.out.println("Hello");
+        priority.set(new Priority(2));
+end
+
+rule "長期顧客_クレーム"
+    when
+        /customer[ contractPeriod >= 5 ];
+        /inquiryCategory[ value.equals("C") ];
+    then
+        priority.set(new Priority(5));
+end
+
+
+rule "中期顧客_要望"
+    when
+        /customer[ contractPeriod >= 2 && contractPeriod < 5 ];
+        /inquiryCategory[ value.equals("A") ];
+    then
+        priority.set(new Priority(1));
+end
+
+rule "中期顧客_質問"
+    when
+        /customer[ contractPeriod >= 2 && contractPeriod < 5 ];
+        /inquiryCategory[ value.equals("B") ];
+    then
+        priority.set(new Priority(2));
+end
+
+rule "中期顧客_クレーム"
+    when
+        /customer[ contractPeriod >= 2 && contractPeriod < 5 ];
+        /inquiryCategory[ value.equals("C") ];
+    then
+        priority.set(new Priority(3));
+end
+
+rule "短期顧客_要望"
+    when
+        /customer[ contractPeriod < 2 ];
+        /inquiryCategory[ value.equals("A") ];
+    then
+        priority.set(new Priority(1));
+end
+
+rule "短期顧客_質問"
+    when
+        /customer[ contractPeriod < 2 ];
+        /inquiryCategory[ value.equals("B") ];
+    then
+        priority.set(new Priority(4));
+end
+
+rule "短期顧客_クレーム"
+    when
+        /customer[ contractPeriod < 2 ];
+        /inquiryCategory[ value.equals("C") ];
+    then
+        priority.set(new Priority(1));
 end
 
 
