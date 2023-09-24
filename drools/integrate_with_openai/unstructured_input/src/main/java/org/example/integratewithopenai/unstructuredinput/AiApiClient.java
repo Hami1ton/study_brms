@@ -1,9 +1,6 @@
 package org.example.integratewithopenai.unstructuredinput;
 
-import java.util.ResourceBundle;
-
 import org.example.integratewithopenai.unstructuredinput.ruleunit.InquiryCategory;
-
 import com.theokanning.openai.completion.CompletionChoice;
 import com.theokanning.openai.completion.CompletionRequest;
 import com.theokanning.openai.service.OpenAiService;
