@@ -9,7 +9,7 @@ import org.drools.ruleunits.api.RuleUnitProvider;
 public class PriorityRuleUnitTest {
     
     @Test
-    public void test_優先度の決定_長期顧客() {
+    public void test_優先度の決定_長期顧客_ポジティブ() {
         PriorityRuleUnit priorityRuleUnit = new PriorityRuleUnit();
         RuleUnitInstance<PriorityRuleUnit> instance = RuleUnitProvider.get().createRuleUnitInstance(priorityRuleUnit);
 
@@ -18,9 +18,9 @@ public class PriorityRuleUnitTest {
 
         var comment = new AnalyzedReviewComment(
             "comment"
-            , 0.94
+            , 0.3
             , 0.8
-            , 0.0
+            , 0.9
         );
         priorityRuleUnit.getAnalyzedReviewComment().append(comment);
 
@@ -30,15 +30,16 @@ public class PriorityRuleUnitTest {
         // get result by query
         var queryResult = instance.executeQuery("FindPriority").toList().get(0);
         Priority priority = (Priority) queryResult.get("$p");
+        instance.close();
 
         // assert
         assertEquals(2, priority.value());
 
-        instance.close();
+        
     }
 
     @Test
-    public void test_優先度の決定_短期顧客() {
+    public void test_優先度の決定_短期顧客_ネガティブ() {
         PriorityRuleUnit priorityRuleUnit = new PriorityRuleUnit();
         RuleUnitInstance<PriorityRuleUnit> instance = RuleUnitProvider.get().createRuleUnitInstance(priorityRuleUnit);
 
@@ -47,9 +48,9 @@ public class PriorityRuleUnitTest {
 
         var comment = new AnalyzedReviewComment(
             "comment"
-            , 0.94
+            , 0.7
             , 0.8
-            , 0.99
+            , 0.9
         );
         priorityRuleUnit.getAnalyzedReviewComment().append(comment);
 
@@ -59,10 +60,9 @@ public class PriorityRuleUnitTest {
         // get result by query
         var queryResult = instance.executeQuery("FindPriority").toList().get(0);
         Priority priority = (Priority) queryResult.get("$p");
+        instance.close();
 
         // assert
-        assertEquals(4, priority.value());
-
-        instance.close();
+        assertEquals(1, priority.value());
     }
 }
