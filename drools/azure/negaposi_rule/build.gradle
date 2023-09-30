@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example.azure.negaposirule'
+version '1.0.0-SNAPSHOT'
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    droolsVersion = '8.44.0.Final'
+}
+
+dependencies {
+    // drools
+    implementation group: 'org.drools', name: 'drools-mvel', version: droolsVersion
+    implementation group: 'org.drools', name: 'drools-xml-support', version: droolsVersion
+    implementation group: 'org.drools', name: 'drools-ruleunits-engine', version: droolsVersion
+
+    // azure sdk
+    implementation 'com.azure:azure-ai-textanalytics:5.3.1'
+    implementation 'com.theokanning.openai-gpt3-java:service:0.16.0'
+
+    // logging
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.32'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.9.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
