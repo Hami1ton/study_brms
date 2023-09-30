@@ -2,19 +2,19 @@ package org.example.azure.negaposirule;
 
 import org.drools.ruleunits.api.RuleUnitInstance;
 import org.drools.ruleunits.api.RuleUnitProvider;
+import org.example.azure.negaposirule.ruleunit.AnalyzedReviewComment;
 import org.example.azure.negaposirule.ruleunit.Customer;
-import org.example.azure.negaposirule.ruleunit.InquiryCategory;
 import org.example.azure.negaposirule.ruleunit.Priority;
 import org.example.azure.negaposirule.ruleunit.PriorityRuleUnit;
 
 public class DecisionService {
 
-    public Priority decidePriority(Customer customer, InquiryCategory category) {
+    public Priority decidePriority(Customer customer, AnalyzedReviewComment comment) {
         PriorityRuleUnit priorityRuleUnit = new PriorityRuleUnit();
         RuleUnitInstance<PriorityRuleUnit> instance = RuleUnitProvider.get().createRuleUnitInstance(priorityRuleUnit);
 
         priorityRuleUnit.getCustomer().append(customer);
-        priorityRuleUnit.getInquiryCategory().append(category);
+        priorityRuleUnit.getAnalyzedReviewComment().append(comment);
 
         // execute rule 
         instance.fire();

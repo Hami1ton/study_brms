@@ -9,7 +9,7 @@ public class PriorityRuleUnit implements RuleUnitData {
     
     private DataStream<Customer> customer;
 
-    private DataStream<InquiryCategory> inquiryCategory;
+    private DataStream<AnalyzedReviewComment> analyzedReviewComment;
 
     private SingletonStore<Priority> priority;
 
@@ -21,12 +21,12 @@ public class PriorityRuleUnit implements RuleUnitData {
         return customer;
     }
 
-    public void setInquiryCategory(DataStream<InquiryCategory> inquiryCategory) {
-        this.inquiryCategory = inquiryCategory;
+    public void setAnalyzedReviewComment(DataStream<AnalyzedReviewComment> analyzedReviewComment) {
+        this.analyzedReviewComment = analyzedReviewComment;
     }
 
-    public DataStream<InquiryCategory> getInquiryCategory() {
-        return inquiryCategory;
+    public DataStream<AnalyzedReviewComment> getAnalyzedReviewComment() {
+        return analyzedReviewComment;
     }
 
     public void setPriority(SingletonStore<Priority> priority) {
