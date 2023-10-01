@@ -19,7 +19,5 @@ public class Main {
         var priority = ds.decidePriority(customer, analyzedReviewComment);
 
         System.out.println(priority);
-
     }
-    
 }

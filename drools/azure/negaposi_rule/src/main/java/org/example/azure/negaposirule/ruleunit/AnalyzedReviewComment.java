@@ -9,6 +9,8 @@ public record AnalyzedReviewComment(
     , double positive) {
 
     public String sentiment() {
+        // Azure AIサービスで算出した感情分析の数値で最も点数が高いものを算出し、
+        // negative, neutral, positiveのいずれかの結果を返す
         var sentimentMap = new HashMap<String, Double>();
         sentimentMap.put("negative", this.negative);
         sentimentMap.put("neutral", this.neutral);
@@ -21,5 +23,4 @@ public record AnalyzedReviewComment(
 
         return maxKey;
     }
-
 }

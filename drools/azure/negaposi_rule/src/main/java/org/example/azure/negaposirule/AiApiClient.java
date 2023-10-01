@@ -15,13 +15,14 @@ public class AiApiClient {
         String key = System.getenv("AZURE_CREDENTIAL_KEY");
         String endpoint = System.getenv("AZURE_ENDPOINT");
 
-        // get token from env
+        // set up api client
         AzureKeyCredential credential = new AzureKeyCredential(key);
         TextAnalyticsClient textAnalyticsClient = new TextAnalyticsClientBuilder()
             .credential(credential)
             .endpoint(endpoint)
             .buildClient();
 
+        // analyze comment
         DocumentSentiment documentSentiment = textAnalyticsClient.analyzeSentiment(comment);
         System.out.println("======Analyze comment======");
         System.out.println("negative:" + documentSentiment.getConfidenceScores().getNegative());
