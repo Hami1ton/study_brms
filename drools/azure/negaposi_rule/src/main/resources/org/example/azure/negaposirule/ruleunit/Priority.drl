@@ -24,7 +24,7 @@ rule "長期顧客_ポジティブ"
         /customer[ contractPeriod >= 2 ];
         /analyzedReviewComment[ sentiment().equals("positive") ];
     then
-        priority.set(new Priority(2));
+        priority.set(new Priority(3));
 end
 
 rule "短期顧客_ネガティブ"
@@ -32,7 +32,7 @@ rule "短期顧客_ネガティブ"
         /customer[ contractPeriod < 2 ];
         /analyzedReviewComment[ sentiment().equals("negative") ];
     then
-        priority.set(new Priority(1));
+        priority.set(new Priority(3));
 end
 
 rule "短期顧客_ニュートラル"
@@ -40,7 +40,7 @@ rule "短期顧客_ニュートラル"
         /customer[ contractPeriod < 2 ];
         /analyzedReviewComment[ sentiment().equals("neutral") ];
     then
-        priority.set(new Priority(4));
+        priority.set(new Priority(1));
 end
 
 rule "短期顧客_ポジティブ"
@@ -48,7 +48,7 @@ rule "短期顧客_ポジティブ"
         /customer[ contractPeriod < 2 ];
         /analyzedReviewComment[ sentiment().equals("positive") ];
     then
-        priority.set(new Priority(1));
+        priority.set(new Priority(2));
 end
 
 query FindPriority

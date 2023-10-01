@@ -24,7 +24,6 @@ dependencies {
 
     // azure sdk
     implementation 'com.azure:azure-ai-textanalytics:5.3.1'
-    implementation 'com.theokanning.openai-gpt3-java:service:0.16.0'
 
     // logging
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.32'

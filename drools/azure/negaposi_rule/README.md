@@ -1,6 +1,6 @@
 # negaposi_rule
 
-Integtration drools with Azure Cognitive Services(Text Analytics)
+Integtration Drools with Azure AI services
 
 
 ## env
@@ -11,10 +11,10 @@ Integtration drools with Azure Cognitive Services(Text Analytics)
 
 ## how to use
 
-- You need to setup your azure account to use Azure Cognitive Services(Text Analytics).
+- You need to setup your azure account to use [Azure AI services(Language)](https://learn.microsoft.com/ja-jp/azure/ai-services/language-service/).
 - Before run application, set an environment valiable in your machine as bellows.
 
 ```
-AZURE_CREDENTIAL_KEY="your Azure Text Analytics access key"
-AZURE_ENDPOINT="your Azure Text Analytics endpoint"
+AZURE_CREDENTIAL_KEY="Your Azure AI services(Language) Access Key"
+AZURE_ENDPOINT="Your Azure AI services(Language) Endpoint"
 ```
