@@ -2,11 +2,3 @@ package org.example.droolsmetricsample;
 
 unit HighPerformanceRuleUnit;
 import java.util.ArrayList;
-
-rule "Collect expensive orders combination"
-  when
-    $p : /persons[ age < 20 ]
-    $o1 : /orders[ person == $p ]
-    $o2 : /orders[ person == $p, id > $o1.id, price > $o1.price ]
-  then
-end

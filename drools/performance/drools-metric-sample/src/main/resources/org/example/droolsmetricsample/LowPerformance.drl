@@ -1,12 +1,45 @@
 package org.example.droolsmetricsample;
-
 unit LowPerformanceRuleUnit;
-import java.util.ArrayList;
 
-rule "Collect expensive orders combination"
+import java.util.ArrayList;
+import java.time.LocalDate;
+import org.example.droolsmetricsample.PointUnit;
+
+rule "Point Filter_1"
   when
-    $p : /persons[ age < 20 ]
-    $o1 : /orders[ person == $p ]
-    $o2 : /orders[ person == $p, id > $o1.id, price > $o1.price ]
+    $p : /persons
+    $pr : /pointsPromotions
+    $o : /orders[ person == $p, orderDate >= $pr.startDate(), orderDate <= $pr.endDate()]
   then
+    insert(new PointUnit($o.itemName(), $o.price(), $pr.points()));
 end
+
+rule "Point Filter_2"
+  when
+    $p : /persons
+    $pr : /pointsPromotions
+    $o : /orders[ person == $p, orderDate < $pr.startDate()]
+  then
+    insert(new PointUnit($o.itemName(), $o.price(), 0));
+end
+
+rule "Point Filter_3"
+  when
+    $p : /persons
+    $pr : /pointsPromotions
+    $o : /orders[ person == $p, orderDate > $pr.endDate()]
+  then
+    insert(new PointUnit($o.itemName(), $o.price(), 0));
+end
+
+rule "Point Calculation"
+  when
+    accumulate( PointUnit( $productPrice : productPrice, $additionalPoint : additionalPoint );
+        $priceSum : sum( $productPrice )
+        , $additionalPointSum : sum( $additionalPoint )
+        )
+  then
+    var allPoint = ($priceSum / 100) + $additionalPointSum;
+    System.out.println(allPoint);
+end
+

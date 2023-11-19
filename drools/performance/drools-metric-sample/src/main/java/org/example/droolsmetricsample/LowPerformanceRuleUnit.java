@@ -3,11 +3,14 @@ package org.example.droolsmetricsample;
 import org.drools.ruleunits.api.DataStream;
 import org.drools.ruleunits.api.RuleUnitData;
 
+
 public class LowPerformanceRuleUnit implements RuleUnitData {
     
     private DataStream<Person> persons;
 
     private DataStream<Order> orders;
+
+    private DataStream<PointsPromotion> pointsPromotions;
 
     public LowPerformanceRuleUnit() {}
 
@@ -30,5 +33,14 @@ public class LowPerformanceRuleUnit implements RuleUnitData {
     public DataStream<Order> getOrders() {
         return orders;
     }
-   
+
+    
+    public void setPointsPromotions(DataStream<PointsPromotion> pointsPromotions) {
+        this.pointsPromotions = pointsPromotions;
+    }
+
+    public DataStream<PointsPromotion> getPointsPromotions() {
+        return pointsPromotions;
+    }
+
 }
