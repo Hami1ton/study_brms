@@ -7,7 +7,7 @@ rule "Point"
   when
     $p : /persons
     $pr : /pointsPromotions
-    $o : /orders[ person == $p, orderDate >= $pr.startDate(), orderDate <= $pr.endDate()]
+    $o : /orders[ orderDate >= $pr.startDate(), orderDate <= $pr.endDate(), person == $p ]
   then
     insert(new Point($o.id(), $o.price(), $pr.points()));
 end
