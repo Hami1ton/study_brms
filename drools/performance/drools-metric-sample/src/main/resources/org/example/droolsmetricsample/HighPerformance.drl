@@ -1,4 +1,13 @@
 package org.example.droolsmetricsample;
-
 unit HighPerformanceRuleUnit;
-import java.util.ArrayList;
+
+import org.example.droolsmetricsample.Point;
+
+rule "Point"
+  when
+    $p : /persons
+    $pr : /pointsPromotions
+    $o : /orders[ person == $p, orderDate >= $pr.startDate(), orderDate <= $pr.endDate()]
+  then
+    insert(new Point($o.id(), $o.price(), $pr.points()));
+end

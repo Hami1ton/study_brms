@@ -14,10 +14,6 @@ public class LowPerformanceRuleUnit implements RuleUnitData {
 
     public LowPerformanceRuleUnit() {}
 
-    public LowPerformanceRuleUnit(DataStream<Person> persons) {
-        this.persons = persons;
-    }
-
     public void setPersons(DataStream<Person> persons) {
         this.persons = persons;
     }

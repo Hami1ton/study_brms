@@ -3,17 +3,16 @@ package org.example.droolsmetricsample;
 import org.drools.ruleunits.api.DataStream;
 import org.drools.ruleunits.api.RuleUnitData;
 
+
 public class HighPerformanceRuleUnit implements RuleUnitData {
     
     private DataStream<Person> persons;
 
     private DataStream<Order> orders;
 
-    public HighPerformanceRuleUnit() {}
+    private DataStream<PointsPromotion> pointsPromotions;
 
-    public HighPerformanceRuleUnit(DataStream<Person> persons) {
-        this.persons = persons;
-    }
+    public HighPerformanceRuleUnit() {}
 
     public void setPersons(DataStream<Person> persons) {
         this.persons = persons;
@@ -30,5 +29,14 @@ public class HighPerformanceRuleUnit implements RuleUnitData {
     public DataStream<Order> getOrders() {
         return orders;
     }
-   
+
+    
+    public void setPointsPromotions(DataStream<PointsPromotion> pointsPromotions) {
+        this.pointsPromotions = pointsPromotions;
+    }
+
+    public DataStream<PointsPromotion> getPointsPromotions() {
+        return pointsPromotions;
+    }
+
 }

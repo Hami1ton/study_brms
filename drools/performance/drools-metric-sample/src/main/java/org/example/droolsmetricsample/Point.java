@@ -1,7 +1,7 @@
 package org.example.droolsmetricsample;
 
-public record PointUnit (
-    String itemName,
+public record Point (
+    int orderId,
     int productPrice,
     int additionalPoint
 ){}
