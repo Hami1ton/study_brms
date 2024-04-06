@@ -18,6 +18,7 @@ public class Main {
         KieContainer kieContainer = ks.getKieClasspathContainer();
         DMNRuntime dmnRuntime = KieRuntimeFactory.of(kieContainer.getKieBase()).get(DMNRuntime.class);
 
+        // namespace, modelNameを指定 (DMNファイルDocumentationから)
         String namespace = "https://kiegroup.org/dmn/_4735995C-BC84-43CC-83AE-63C1BB354B5C";
         String modelName = "Drink";
         DMNModel dmnModel = dmnRuntime.getModel(namespace, modelName);

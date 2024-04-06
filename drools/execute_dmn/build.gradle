@@ -15,13 +15,8 @@ ext {
 
 dependencies {
     // drools
-    // implementation group: 'org.drools', name: 'drools-mvel', version: droolsVersion
-
     implementation group: 'org.drools', name: 'drools-xml-support', version: droolsVersion
-    implementation group: 'org.drools', name: 'drools-engine-classic', version: droolsVersion
     implementation group: 'org.kie', name: 'kie-dmn-core', version: droolsVersion
-    implementation group: 'org.kie', name: 'kie-dmn-api', version: droolsVersion
-    implementation group: 'org.kie', name: 'kie-ci', version: droolsVersion
 
     // logging
     implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
