@@ -1,0 +1,37 @@
+import org.example.declarativeagenda.Visitor
+import org.example.declarativeagenda.Ticket
+
+rule "子供料金 NoControl"
+    agenda-group "NoControl"
+    when
+        $person : Visitor( age < 15 )
+    then
+        insert(new Ticket("子供料金", 6000));
+end
+
+rule "通常料金 NoControl"
+    agenda-group "NoControl"
+    when
+        $person : Visitor( 15 <= age, age < 65 )
+    then
+        insert(new Ticket("通常料金", 8000));
+end
+
+
+rule "シニア料金 NoControl"
+    agenda-group "NoControl"
+    when
+        $person : Visitor( 65 < age )
+    then
+        insert(new Ticket("シニア料金", 7000));
+end
+
+
+rule "合計計算 NoControl"
+    agenda-group "NoControl"
+    when
+        accumulate( Ticket( $charge : charge );
+                        $sum : sum( $charge ) )
+    then
+        System.out.println("Ticket Total Charge: " + $sum);
+end
