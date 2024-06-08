@@ -1,0 +1,55 @@
+import org.example.declarativeagenda.Visitor
+import org.example.declarativeagenda.Ticket
+import org.kie.api.runtime.rule.Match
+
+
+rule "子供料金 DeclarativeAgendaSample"
+    agenda-group "DeclarativeAgendaSample"
+    salience 10
+
+    when
+        $person : Visitor( age < 15 )
+    then
+        insert(new Ticket("子供料金", 6000));
+end
+
+rule "通常料金 DeclarativeAgendaSample"
+    agenda-group "DeclarativeAgendaSample"
+    salience 10
+
+    when
+        $person : Visitor( 15 <= age, age < 65 )
+    then
+        insert(new Ticket("通常料金", 8000));
+end
+
+rule "シニア料金 DeclarativeAgendaSample"
+    agenda-group "DeclarativeAgendaSample"
+
+    when
+        $person : Visitor( 65 < age )
+    then
+        insert(new Ticket("シニア料金", 7000));
+end
+
+
+rule "合計計算 DeclarativeAgendaSample" @Eager @department('合計計算')
+    agenda-group "DeclarativeAgendaSample"
+
+    when
+        accumulate( Ticket( $charge : charge );
+                        $sum : sum( $charge ) )
+    then
+        System.out.println("Ticket Total Charge: " + $sum);
+end
+
+rule "実行制御 DeclarativeAgendaSample" @Direct @Eager
+    agenda-group "DeclarativeAgendaSample"
+
+    when
+        $i: Match(department == '合計計算')
+    then
+        kcontext.blockMatch($i);
+end
+
+
