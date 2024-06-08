@@ -1,0 +1,22 @@
+import org.example.dslsample.Person
+import org.example.dslsample.Drink
+
+expander DrinkRule.dsl
+
+rule "Child"
+    when
+        ドリンクが注文される
+        来店客の年齢が 20 才未満
+    then
+        オレンジジュースをお出しする
+        オレンジジュースの料金は100円
+end
+
+rule "Adult"
+    when
+        ドリンクが注文される
+        来店客の年齢が 20 才以上
+    then
+        ビールをお出しする
+        ビールの料金は200円
+end
