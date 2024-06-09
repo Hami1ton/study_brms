@@ -25,7 +25,7 @@ public class SampleDslTest {
         kieSession.fireAllRules();
 
         // assert
-        assertEquals("Orange Juice", drink.getName());
+        assertEquals("オレンジジュース", drink.getName());
         assertEquals(100, drink.getCharge());
 
         kieSession.dispose();
@@ -47,7 +47,7 @@ public class SampleDslTest {
         kieSession.fireAllRules();
 
         // assert
-        assertEquals("Beer", drink.getName());
+        assertEquals("ビール", drink.getName());
         assertEquals(200, drink.getCharge());
 
         kieSession.dispose();
