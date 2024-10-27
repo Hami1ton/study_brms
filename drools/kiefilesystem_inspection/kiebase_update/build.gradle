@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example.kiebaseupdate'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    droolsVersion = '8.44.0.Final'
+}
+
+dependencies {
+    // drools
+    implementation group: 'org.drools', name: 'drools-mvel', version: droolsVersion
+    implementation group: 'org.drools', name: 'drools-xml-support', version: droolsVersion
+
+    // logging
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
