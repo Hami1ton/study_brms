@@ -49,4 +49,17 @@ public class KieResourceCreater {
         return rule;
     }
 
+    public static KieContainer createForStateLess() {
+
+        KieServices ks = KieServices.Factory.get();
+        KieRepository kr = ks.getRepository();
+        KieFileSystem kfs = ks.newKieFileSystem();
+
+        kfs.write("src/main/resources/org/example/kiefilesysteminspection/example/Drink.drl", getRuleStr());
+        KieBuilder kb = ks.newKieBuilder(kfs);
+        kb.buildAll();
+
+        KieContainer kContainer = ks.newKieContainer(kr.getDefaultReleaseId());
+        return kContainer;
+    }
 }

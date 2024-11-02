@@ -17,6 +17,8 @@ dependencies {
     // drools
     implementation group: 'org.kie', name: 'kie-api', version: droolsVersion
     implementation group: 'org.drools', name: 'drools-mvel', version: droolsVersion
+    // for stateless session
+    implementation group: 'org.drools', name: 'drools-commands', version: droolsVersion
 
     // logging
     implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
