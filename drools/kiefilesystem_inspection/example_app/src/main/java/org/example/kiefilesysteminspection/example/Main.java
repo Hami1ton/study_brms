@@ -11,7 +11,7 @@ public class Main {
         var drink = new Drink();
 
         // set up Kie Session
-        KieBase kiebase = KieBaseCreater.create();
+        KieBase kiebase = KieResourceCreater.create();
         var kSession = kiebase.newKieSession();
 
         // execute rule

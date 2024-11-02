@@ -7,7 +7,7 @@ import org.kie.api.builder.KieFileSystem;
 import org.kie.api.builder.KieRepository;
 import org.kie.api.runtime.KieContainer;
 
-public class KieBaseCreater {
+public class KieResourceCreater {
 
     public static KieBase create() {
         KieServices ks = KieServices.Factory.get();
@@ -48,5 +48,5 @@ public class KieBaseCreater {
                    "end \n";
         return rule;
     }
-    
+
 }
