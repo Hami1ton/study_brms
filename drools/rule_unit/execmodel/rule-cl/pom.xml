@@ -14,7 +14,6 @@
     <maven.compiler.release>11</maven.compiler.release>
     <junit-version>4.13.1</junit-version>
     <logback-version>1.2.9</logback-version>
-    <drools-version>8.44.0.Final</drools-version>
   </properties>
 
   <dependencies>
