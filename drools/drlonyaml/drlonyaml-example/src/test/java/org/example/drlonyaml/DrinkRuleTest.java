@@ -31,7 +31,7 @@ public class DrinkRuleTest {
         String drl = YAMLtoDrlDumper.yaml2drl(yaml);
         log.info("\n" + drl);
 
-        KieBase kieBase = createKieContainer(drl);
+        KieBase kieBase = createKieBase(drl);
         KieSession kieSession = kieBase.newKieSession();
 
         try {
@@ -68,7 +68,7 @@ public class DrinkRuleTest {
         }
     }
 
-    private KieBase createKieContainer(String drl) {
+    private KieBase createKieBase(String drl) {
         KieServices ks = KieServices.Factory.get();
         KieRepository kr = ks.getRepository();
         KieFileSystem kfs = ks.newKieFileSystem();
