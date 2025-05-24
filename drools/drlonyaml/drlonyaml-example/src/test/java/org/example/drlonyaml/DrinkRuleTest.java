@@ -27,8 +27,7 @@ public class DrinkRuleTest {
     @Test
     public void test_drink() throws Exception {
 
-        String yaml =  readResourceFileAsString("org/example/drlonyaml/DrinkRule.drl.yaml");
-        log.info("\n" + yaml);
+        String yaml = readResourceFileAsString("org/example/drlonyaml/DrinkRule.drl.yaml");
         String drl = YAMLtoDrlDumper.yaml2drl(yaml);
         log.info("\n" + drl);
 
