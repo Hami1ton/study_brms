@@ -1,0 +1,27 @@
+name: org.example.drlonyaml
+rules:
+- name: Child
+  when:
+  - given: Person
+    as: $person
+    having:
+      - age < 20
+  - given: Drink
+    as: $drink
+
+  then: |
+    $drink.setName( "Orange Juice" );
+    $drink.setCharge( 100 );
+
+- name: Adult
+  when:
+  - given: Person
+    as: $person
+    having:
+      - age >= 20
+  - given: Drink
+    as: $drink
+
+  then: |
+    $drink.setName( "Beer" );
+    $drink.setCharge( 200 );
