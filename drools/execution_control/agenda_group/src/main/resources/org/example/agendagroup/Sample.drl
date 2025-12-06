@@ -1,0 +1,35 @@
+package org.example.agendagroup;
+
+import org.example.agendagroup.SampleData;
+
+rule "Rule_A"
+    agenda-group "Phase_1"
+
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_A");
+        System.out.println($data);
+end
+
+rule "Rule_B"
+    agenda-group "Phase_2"
+
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_B");
+        System.out.println($data);
+end
+
+
+rule "Rule_C"
+    agenda-group "Phase_3"
+
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_C");
+        System.out.println($data);
+end
+
