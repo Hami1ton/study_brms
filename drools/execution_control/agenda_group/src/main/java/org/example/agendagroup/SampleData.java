@@ -1,10 +1,11 @@
 package org.example.agendagroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SampleData {
 
-    private ArrayList<String> executedRules = new ArrayList<>();
+    private List<String> executedRules = new ArrayList<>();
 
     private String latestRule = "";
 
@@ -13,7 +14,7 @@ public class SampleData {
         this.latestRule = ruleName;
     }
 
-    public ArrayList<String> getExecutedRules(String ruleName) {
+    public List<String> getExecutedRules() {
         return executedRules;
     }
 
