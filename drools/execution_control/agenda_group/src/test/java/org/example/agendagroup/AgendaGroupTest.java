@@ -1,10 +1,12 @@
 package org.example.agendagroup;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -16,38 +18,64 @@ public class AgendaGroupTest {
 
     static final Logger log = LoggerFactory.getLogger(AgendaGroupTest.class);
 
-    @Test
-    public void test_drink() throws Exception {
+    private KieContainer kieContainer;
+    private KieSession kieSession;
 
+    @BeforeEach
+    public void setup() {
         KieServices ks = KieServices.Factory.get();
-        KieContainer kContainer = ks.getKieClasspathContainer();
+        kieContainer = ks.getKieClasspathContainer();
+        kieSession = kieContainer.newKieSession();
+    }
 
-        KieSession kieSession = kContainer.newKieSession();
-
-        try {
-            var data = new SampleData();
-            kieSession.insert(data);
-
-            // Phase_1
-            kieSession.getAgenda().getAgendaGroup("Phase_1").setFocus();
-            kieSession.fireAllRules();
-
-            // Phase_2
-            kieSession.getAgenda().getAgendaGroup("Phase_2").setFocus();
-            kieSession.fireAllRules();
-
-            // Phase_3
-            kieSession.getAgenda().getAgendaGroup("Phase_3").setFocus();
-            kieSession.fireAllRules();
-
-            // exectute rule
-            kieSession.fireAllRules();
-            assertEquals(Arrays.asList("Rule_A", "Rule_B", "Rule_C"), data.getExecutedRules());
-            assertEquals("Rule_C", data.getLatestRule());
-
-        } finally {
-            // dispose
+    @AfterEach
+    public void cleanup() {
+        if (kieSession != null) {
             kieSession.dispose();
         }
+    }
+
+    @Test
+    public void test_全フェーズのルール実行() {
+
+        var data = new SampleData();
+        kieSession.insert(data);
+
+        // Phase_1
+        kieSession.getAgenda().getAgendaGroup("Phase_1").setFocus();
+        kieSession.fireAllRules();
+
+        // Phase_2
+        kieSession.getAgenda().getAgendaGroup("Phase_2").setFocus();
+        kieSession.fireAllRules();
+
+        // Phase_3
+        kieSession.getAgenda().getAgendaGroup("Phase_3").setFocus();
+        kieSession.fireAllRules();
+
+        // exectute rule
+        kieSession.fireAllRules();
+        assertEquals(Arrays.asList("Rule_A", "Rule_B", "Rule_C"), data.getExecutedRules());
+        assertEquals("Rule_C", data.getLatestRule());
+    }
+
+    @Test
+    public void test_2フェーズのルール実行() {
+
+        var data = new SampleData();
+        kieSession.insert(data);
+
+        // Phase_1
+        kieSession.getAgenda().getAgendaGroup("Phase_1").setFocus();
+        kieSession.fireAllRules();
+
+        // Phase_3
+        kieSession.getAgenda().getAgendaGroup("Phase_3").setFocus();
+        kieSession.fireAllRules();
+
+        // exectute rule
+        kieSession.fireAllRules();
+        assertEquals(Arrays.asList("Rule_A", "Rule_C"), data.getExecutedRules());
+        assertEquals("Rule_C", data.getLatestRule());
     }
 }
