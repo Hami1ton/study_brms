@@ -1,0 +1,35 @@
+package org.example.ruleflowgroup;
+
+import org.example.ruleflowgroup.SampleData;
+
+rule "Rule_A"
+    ruleflow-group "Phase_1"
+
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_A");
+        System.out.println($data);
+end
+
+rule "Rule_B"
+    ruleflow-group "Phase_2"
+
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_B");
+        System.out.println($data);
+end
+
+
+rule "Rule_C"
+    ruleflow-group "Phase_3"
+
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_C");
+        System.out.println($data);
+end
+
