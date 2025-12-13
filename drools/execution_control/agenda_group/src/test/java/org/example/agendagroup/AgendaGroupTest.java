@@ -54,7 +54,6 @@ public class AgendaGroupTest {
         kieSession.fireAllRules();
 
         // exectute rule
-        kieSession.fireAllRules();
         assertEquals(Arrays.asList("Rule_A", "Rule_B", "Rule_C"), data.getExecutedRules());
         assertEquals("Rule_C", data.getLatestRule());
     }
@@ -74,7 +73,6 @@ public class AgendaGroupTest {
         kieSession.fireAllRules();
 
         // exectute rule
-        kieSession.fireAllRules();
         assertEquals(Arrays.asList("Rule_A", "Rule_C"), data.getExecutedRules());
         assertEquals("Rule_C", data.getLatestRule());
     }
