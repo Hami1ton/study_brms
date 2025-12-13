@@ -42,11 +42,11 @@ public class AgendaFilterTest {
         var data = new SampleData();
         kieSession.insert(data);
 
-        // Phase_1
+        // Rule_A execute
         kieSession.getAgenda().getAgendaGroup("Phase_1").setFocus();
         kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Rule_A" ) );
 
-        // exectute rule
+        // assert
         assertEquals(Arrays.asList("Rule_A"), data.getExecutedRules());
         assertEquals("Rule_A", data.getLatestRule());
     }
