@@ -1,5 +1,7 @@
 # agendagroup-sample
 
+Drools 10.0.0 で agenda-group を動かすサンプル。
+
 ## env
 
 - windows 11
