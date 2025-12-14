@@ -1,2 +1,0 @@
-# declarative_agenda
-
