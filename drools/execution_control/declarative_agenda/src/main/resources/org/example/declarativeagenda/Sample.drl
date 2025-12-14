@@ -1,0 +1,59 @@
+package org.example.declarativeagenda;
+
+import org.example.declarativeagenda.SampleData;
+import org.kie.api.runtime.rule.Match;
+
+rule "Rule_A" @Eager @department("Phase_1")
+    lock-on-active true
+
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_A");
+        System.out.println($data);
+        modify ( $data ) { latestRule = "Rule_A" };
+end
+
+rule "Rule_B" @Eager @department("Phase_2")
+    lock-on-active true
+    
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_B");
+        System.out.println($data);
+        modify ( $data ) { latestRule = "Rule_B" };
+end
+
+rule "Rule_C" @Eager @department("Phase_3")
+    lock-on-active true
+
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_C");
+        System.out.println($data);
+        modify ( $data ) { latestRule = "Rule_C" };
+end
+
+rule "BlockPhaseTwoRules" @Direct @Eager
+    lock-on-active true
+
+    when
+        $m: Match(department == "Phase_2")
+        $d: SampleData(latestRule == "Rule_A")
+    then
+        System.out.println("ブロック");
+        kcontext.blockMatch($m);
+end
+
+rule "UnblockPhaseTwoRules" @Direct @Eager
+    lock-on-active true
+
+    when
+        $m: Match(department == "Phase_2")
+        $d: SampleData(latestRule == "Rule_C")
+    then
+        System.out.println("ブロック解除");
+        kcontext.unblockAllMatches($m);
+end
