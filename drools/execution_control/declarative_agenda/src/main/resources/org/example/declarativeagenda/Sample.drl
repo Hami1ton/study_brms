@@ -10,8 +10,9 @@ rule "Rule_A" @Eager @department("Phase_1")
         $data : SampleData()
     then
         $data.addRuleName("Rule_A");
+        modify ($data) { setLatestRule("Rule_A") };
         System.out.println($data);
-        modify ( $data ) { latestRule = "Rule_A" };
+        // System.out.println($data.getLatestRule());
 end
 
 rule "Rule_B" @Eager @department("Phase_2")
@@ -21,8 +22,8 @@ rule "Rule_B" @Eager @department("Phase_2")
         $data : SampleData()
     then
         $data.addRuleName("Rule_B");
+        modify ($data) { setLatestRule("Rule_B") };
         System.out.println($data);
-        modify ( $data ) { latestRule = "Rule_B" };
 end
 
 rule "Rule_C" @Eager @department("Phase_3")
@@ -32,12 +33,11 @@ rule "Rule_C" @Eager @department("Phase_3")
         $data : SampleData()
     then
         $data.addRuleName("Rule_C");
+        modify ($data) { setLatestRule("Rule_C") };
         System.out.println($data);
-        modify ( $data ) { latestRule = "Rule_C" };
 end
 
-rule "BlockPhaseTwoRules" @Direct @Eager
-    lock-on-active true
+rule "BlockPhaseTwoRule" @Direct @Eager
 
     when
         $m: Match(department == "Phase_2")
@@ -47,8 +47,7 @@ rule "BlockPhaseTwoRules" @Direct @Eager
         kcontext.blockMatch($m);
 end
 
-rule "UnblockPhaseTwoRules" @Direct @Eager
-    lock-on-active true
+rule "UnblockPhaseTwoRule" @Direct @Eager
 
     when
         $m: Match(department == "Phase_2")

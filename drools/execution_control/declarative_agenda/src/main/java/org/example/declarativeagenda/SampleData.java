@@ -7,11 +7,10 @@ public class SampleData {
 
     private List<String> executedRules = new ArrayList<>();
 
-    public String latestRule = "";
+    private String latestRule = "";
 
     public void addRuleName(String ruleName) {
         this.executedRules.add(ruleName);
-        // this.latestRule = ruleName;
     }
 
     public List<String> getExecutedRules() {

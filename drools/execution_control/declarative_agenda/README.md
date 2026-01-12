@@ -1,4 +1,4 @@
-# declarativeagenda-sample(WIP)
+# declarativeagenda-sample
 
 Drools 10.0.0 で declarative-agenda を動かすサンプル。
 
