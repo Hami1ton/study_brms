@@ -3,7 +3,7 @@ package org.example.declarativeagenda;
 import org.example.declarativeagenda.SampleData;
 import org.kie.api.runtime.rule.Match;
 
-rule "Rule_A" @Eager @department("Phase_1")
+rule "Rule_A" @Eager @phase("Phase_1")
     lock-on-active true
 
     when
@@ -12,10 +12,9 @@ rule "Rule_A" @Eager @department("Phase_1")
         $data.addRuleName("Rule_A");
         modify ($data) { setLatestRule("Rule_A") };
         System.out.println($data);
-        // System.out.println($data.getLatestRule());
 end
 
-rule "Rule_B" @Eager @department("Phase_2")
+rule "Rule_B" @Eager @phase("Phase_2")
     lock-on-active true
     
     when
@@ -26,7 +25,7 @@ rule "Rule_B" @Eager @department("Phase_2")
         System.out.println($data);
 end
 
-rule "Rule_C" @Eager @department("Phase_3")
+rule "Rule_C" @Eager @phase("Phase_3")
     lock-on-active true
 
     when
@@ -40,7 +39,7 @@ end
 rule "BlockPhaseTwoRule" @Direct @Eager
 
     when
-        $m: Match(rule.metaData["department"] == "Phase_2")
+        $m: Match(rule.metaData["phase"] == "Phase_2")
         $d: SampleData(latestRule == "Rule_A")
     then
         System.out.println("ブロック");
@@ -50,7 +49,7 @@ end
 rule "UnblockPhaseTwoRule" @Direct @Eager
 
     when
-        $m: Match(rule.metaData["department"] == "Phase_2")
+        $m: Match(rule.metaData["phase"] == "Phase_2")
         $d: SampleData(latestRule == "Rule_C")
     then
         System.out.println("ブロック解除");
