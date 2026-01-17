@@ -36,8 +36,7 @@ public class DeclarativeAgendaTest {
     }
 
     @Test
-    public void test_フェーズのブロック検証() {
-        // Phase_1 ⇒ Phase_3 ⇒ Phase_2 の順に流れることを検証
+    public void test_実行順検証() {
 
         var data = new SampleData();
         kieSession.insert(data);

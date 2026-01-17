@@ -36,7 +36,7 @@ public class AgendaGroupTest {
     }
 
     @Test
-    public void test_全フェーズのルール実行() {
+    public void test_実行順検証() {
 
         var data = new SampleData();
         kieSession.insert(data);
