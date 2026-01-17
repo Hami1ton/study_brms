@@ -45,17 +45,17 @@ public class AgendaGroupTest {
         kieSession.getAgenda().getAgendaGroup("Phase_1").setFocus();
         kieSession.fireAllRules();
 
-        // Phase_2
-        kieSession.getAgenda().getAgendaGroup("Phase_2").setFocus();
-        kieSession.fireAllRules();
-
         // Phase_3
         kieSession.getAgenda().getAgendaGroup("Phase_3").setFocus();
         kieSession.fireAllRules();
 
+        // Phase_2
+        kieSession.getAgenda().getAgendaGroup("Phase_2").setFocus();
+        kieSession.fireAllRules();
+
         // assert
-        assertEquals(Arrays.asList("Rule_A", "Rule_B", "Rule_C"), data.getExecutedRules());
-        assertEquals("Rule_C", data.getLatestRule());
+        assertEquals(Arrays.asList("Rule_A", "Rule_C", "Rule_B"), data.getExecutedRules());
+        assertEquals("Rule_B", data.getLatestRule());
     }
 
     @Test
