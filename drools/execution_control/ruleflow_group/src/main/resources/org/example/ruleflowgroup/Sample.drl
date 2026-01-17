@@ -9,6 +9,7 @@ rule "Rule_A"
         $data : SampleData()
     then
         $data.addRuleName("Rule_A");
+        $data.setLatestRule("Rule_A");
         System.out.println($data);
 end
 
@@ -19,6 +20,7 @@ rule "Rule_B"
         $data : SampleData()
     then
         $data.addRuleName("Rule_B");
+        $data.setLatestRule("Rule_B");
         System.out.println($data);
 end
 
@@ -30,6 +32,7 @@ rule "Rule_C"
         $data : SampleData()
     then
         $data.addRuleName("Rule_C");
+        $data.setLatestRule("Rule_C");
         System.out.println($data);
 end
 

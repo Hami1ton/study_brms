@@ -46,17 +46,17 @@ public class RuleflowGroupTest {
         ((InternalAgenda) kieSession.getAgenda()).activateRuleFlowGroup("Phase_1");
         kieSession.fireAllRules();
 
-        // Phase_2
-        ((InternalAgenda) kieSession.getAgenda()).activateRuleFlowGroup("Phase_2");
-        kieSession.fireAllRules();
-
         // Phase_3
         ((InternalAgenda) kieSession.getAgenda()).activateRuleFlowGroup("Phase_3");
         kieSession.fireAllRules();
 
+        // Phase_2
+        ((InternalAgenda) kieSession.getAgenda()).activateRuleFlowGroup("Phase_2");
+        kieSession.fireAllRules();
+
         // assert
-        assertEquals(Arrays.asList("Rule_A", "Rule_B", "Rule_C"), data.getExecutedRules());
-        assertEquals("Rule_C", data.getLatestRule());
+        assertEquals(Arrays.asList("Rule_A", "Rule_C", "Rule_B"), data.getExecutedRules());
+        assertEquals("Rule_B", data.getLatestRule());
     }
 
     @Test
