@@ -36,7 +36,7 @@ rule "Rule_C" @Eager @phase("Phase_3")
         System.out.println($data);
 end
 
-rule "BlockPhaseTwoRule" @Direct @Eager
+rule "Phase_2 ルールをブロック" @Direct
 
     when
         $m: Match(rule.metaData["phase"] == "Phase_2")
@@ -46,7 +46,7 @@ rule "BlockPhaseTwoRule" @Direct @Eager
         kcontext.blockMatch($m);
 end
 
-rule "UnblockPhaseTwoRule" @Direct @Eager
+rule "Phase_2 ルールをブロック解除" @Direct
 
     when
         $m: Match(rule.metaData["phase"] == "Phase_2")
