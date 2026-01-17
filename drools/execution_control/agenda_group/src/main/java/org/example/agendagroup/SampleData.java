@@ -11,11 +11,14 @@ public class SampleData {
 
     public void addRuleName(String ruleName) {
         this.executedRules.add(ruleName);
-        this.latestRule = ruleName;
     }
 
     public List<String> getExecutedRules() {
         return executedRules;
+    }
+    
+    public void setLatestRule(String ruleName) {
+        this.latestRule = ruleName;
     }
 
     public String getLatestRule() {
