@@ -40,7 +40,7 @@ end
 rule "BlockPhaseTwoRule" @Direct @Eager
 
     when
-        $m: Match(department == "Phase_2")
+        $m: Match(rule.metaData["department"] == "Phase_2")
         $d: SampleData(latestRule == "Rule_A")
     then
         System.out.println("ブロック");
@@ -50,7 +50,7 @@ end
 rule "UnblockPhaseTwoRule" @Direct @Eager
 
     when
-        $m: Match(department == "Phase_2")
+        $m: Match(rule.metaData["department"] == "Phase_2")
         $d: SampleData(latestRule == "Rule_C")
     then
         System.out.println("ブロック解除");
