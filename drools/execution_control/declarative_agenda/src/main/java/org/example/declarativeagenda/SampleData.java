@@ -5,8 +5,10 @@ import java.util.List;
 
 public class SampleData {
 
+    // これまで実行されたルール名のリスト
     private List<String> executedRules = new ArrayList<>();
 
+    // 最後に実行されたルール名
     private String latestRule = "";
 
     public void addRuleName(String ruleName) {
