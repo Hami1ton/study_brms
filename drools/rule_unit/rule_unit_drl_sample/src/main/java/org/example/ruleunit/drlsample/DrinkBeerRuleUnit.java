@@ -9,6 +9,7 @@ import org.drools.ruleunits.api.RuleUnitData;
 
 public class DrinkBeerRuleUnit implements RuleUnitData {
     
+    // ルールの条件で参照するデータ定義(DataStoreを使用)    
     private DataStore<Person> persons;
 
     private List<Drink> drinkList = new ArrayList<>();
