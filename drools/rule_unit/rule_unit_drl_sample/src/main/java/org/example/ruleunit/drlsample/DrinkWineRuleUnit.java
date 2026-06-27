@@ -10,7 +10,7 @@ import org.drools.ruleunits.api.RuleUnitData;
 public class DrinkWineRuleUnit implements RuleUnitData {
     
     // ルールの条件で参照するデータ定義(DataStreamを使用)    
-    private DataStream<Person> persons = DataSource.createStream();;
+    private DataStream<Person> persons = DataSource.createStream();
 
     private List<Drink> drinkList = new ArrayList<>();
 
