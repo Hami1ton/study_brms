@@ -1,8 +1,9 @@
 # rule_unit_drl_sample
 
-Rule Unitのサンプルアプリ
+Rule Unit のお試しコード
 
-## 環境
+
+## ライブラリ情報など
 
 - jdk 17
 - drools 10.2.0
