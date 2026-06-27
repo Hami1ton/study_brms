@@ -2,34 +2,35 @@ plugins {
     id 'java'
 }
 
-group 'org.example.ruleunit.drlsample'
-version '1.0.0-SNAPSHOT'
+group = 'org.example.ruleunit.drlsample'
+version = '1.0.0-SNAPSHOT'
 
-compileJava.options.encoding = "UTF-8"
-compileTestJava.options.encoding = "UTF-8"
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
 
 repositories {
     mavenCentral()
 }
 
-ext {
-    droolsVersion = '8.41.0.Final'
-}
+def droolsVersion = '10.2.0'
 
 dependencies {
-    // drools
-    implementation group: 'org.drools', name: 'drools-mvel', version: droolsVersion
-    implementation group: 'org.drools', name: 'drools-xml-support', version: droolsVersion
-    implementation group: 'org.drools', name: 'drools-ruleunits-engine', version: droolsVersion
+    // Drools
+    implementation "org.drools:drools-mvel:${droolsVersion}"
+    implementation "org.drools:drools-xml-support:${droolsVersion}"
+    implementation "org.drools:drools-ruleunits-engine:${droolsVersion}"
 
-    // logging
-    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.32'
+    // Logging
+    implementation 'org.slf4j:slf4j-simple:2.0.13'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testImplementation 'org.junit.platform:junit-platform-launcher:1.9.3'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.0'
 }
 
 test {
     useJUnitPlatform()
+
+    testLogging.showStandardStreams = true
 }
