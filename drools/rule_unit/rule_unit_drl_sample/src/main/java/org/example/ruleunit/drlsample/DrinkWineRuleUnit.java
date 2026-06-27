@@ -7,17 +7,17 @@ import org.drools.ruleunits.api.DataSource;
 import org.drools.ruleunits.api.DataStore;
 import org.drools.ruleunits.api.RuleUnitData;
 
-public class DrinkRuleUnit implements RuleUnitData {
+public class DrinkWineRuleUnit implements RuleUnitData {
     
     private DataStore<Person> persons;
 
     private List<Drink> drinkList = new ArrayList<>();
 
-    public DrinkRuleUnit() {
+    public DrinkWineRuleUnit() {
         this(DataSource.createStore());
     }
 
-    public DrinkRuleUnit(DataStore<Person> persons) {
+    public DrinkWineRuleUnit(DataStore<Person> persons) {
         this.persons = persons;
     }
 

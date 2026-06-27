@@ -1,15 +1,22 @@
 package org.example.ruleunit.drlsample;
 
-
 public class Person {
 
     private String name;
 
     private int age;
 
+    private Address address;
+
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Person(String name, int age, Address address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
     }
 
     public String getName(){
@@ -26,6 +33,14 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override

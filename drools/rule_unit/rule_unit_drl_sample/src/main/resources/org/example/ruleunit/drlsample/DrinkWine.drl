@@ -1,0 +1,16 @@
+package org.example.ruleunit.drlsample;
+unit DrinkWineRuleUnit;
+
+rule "お酒は飲めないのでオレンジジュースにする"
+    when
+        /persons[ age < 20 ]
+    then
+        drinkList.add(new Drink("Orange Juice"));
+end
+
+rule "20歳以上なのでワインが飲める"
+    when
+        /persons[ age >= 20 ]
+    then
+        drinkList.add(new Drink("Wine"));
+end

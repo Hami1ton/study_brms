@@ -1,0 +1,17 @@
+package org.example.ruleunit.drlsample;
+unit OOPathNestSample;
+
+rule "OOPathを使ったネスト表記_Tokyo"
+    when
+        /persons[ age >= 20 ]/address[ city == "Tokyo" ]
+    then
+        System.out.println("OOPathのネスト表記_Tokyo");
+end
+
+rule "OOPathを使ったネスト表記_London"
+    when
+        /persons[ age >= 20, address.city == "London" ]
+    then
+        System.out.println("OOPathのネスト表記_London");
+end
+

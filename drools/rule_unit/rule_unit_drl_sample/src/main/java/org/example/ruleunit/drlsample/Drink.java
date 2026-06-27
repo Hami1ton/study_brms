@@ -1,36 +1,24 @@
 package org.example.ruleunit.drlsample;
 
-
 public class Drink {
 
     private String name;
 
-    private int charge;
-
-    public Drink(String name, int charge) {
+    public Drink(String name) {
         this.name = name;
-        this.charge = charge;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCharge(){
-        return charge;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setCharge(int charge){
-        this.charge = charge;
-    }
-
     @Override
     public String toString() {
-        return "name: " + name + ", " + "charge: " + charge;
+        return "name: " + name;
     }
 
 }
