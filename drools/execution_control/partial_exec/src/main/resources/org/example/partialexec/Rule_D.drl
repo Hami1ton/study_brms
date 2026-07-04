@@ -1,0 +1,8 @@
+package org.example.partialexec;
+
+rule "Rule_Dを記録"
+    when
+        $data : ExecutedRules()
+    then
+        $data.recordRuleName("Rule_D");
+end
