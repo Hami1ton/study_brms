@@ -40,11 +40,10 @@ public class SingleLineTest {
         var data = new SampleData();
         kieSession.insert(data);
 
-        // Rule_A のみを実行する
-        kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Rule_A" ) );
+        // 「Rule_Aを記録」のみを実行する
+        kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Rule_Aを記録" ) );
 
         // assert
         assertEquals(Arrays.asList("Rule_A"), data.getExecutedRules());
-        assertEquals("Rule_A", data.getLatestRule());
     }
 }

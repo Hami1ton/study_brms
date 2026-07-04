@@ -1,0 +1,8 @@
+package org.example.drltest;
+
+rule "Rule_Dを記録"
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_D");
+end

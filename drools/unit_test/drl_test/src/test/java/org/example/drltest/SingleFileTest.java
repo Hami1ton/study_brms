@@ -23,7 +23,7 @@ public class SingleFileTest {
         KieFileSystem kfs = ks.newKieFileSystem();
 
         // テストしたいDRLファイル（1ファイルだけ）をクラスパスから読み込む
-        kfs.write(ResourceFactory.newClassPathResource("org/example/drltest/Sample.drl"));
+        kfs.write(ResourceFactory.newClassPathResource("org/example/drltest/Rule_A_B_C.drl"));
         ks.newKieBuilder(kfs).buildAll();
 
         KieContainer kContainer = ks.newKieContainer(ks.getRepository().getDefaultReleaseId());
