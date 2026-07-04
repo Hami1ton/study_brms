@@ -4,5 +4,5 @@ rule "Rule_Dを記録"
     when
         $data : ExecutedRules()
     then
-        $data.addRuleName("Rule_D");
+        $data.recordRuleName("Rule_D");
 end

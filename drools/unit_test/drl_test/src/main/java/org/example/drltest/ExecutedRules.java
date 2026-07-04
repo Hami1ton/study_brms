@@ -5,18 +5,18 @@ import java.util.List;
 
 public class ExecutedRules {
     // これまで実行されたルール名のリスト
-    private List<String> executedRules = new ArrayList<>();
+    private List<String> result = new ArrayList<>();
 
-    public void addRuleName(String ruleName) {
-        this.executedRules.add(ruleName);
+    public void recordRuleName(String ruleName) {
+        this.result.add(ruleName);
     }
 
     public List<String> getExecutedRules() {
-        return executedRules;
+        return result;
     }
     
     @Override
     public String toString() {
-        return this.executedRules.toString();
+        return this.result.toString();
     }
 }

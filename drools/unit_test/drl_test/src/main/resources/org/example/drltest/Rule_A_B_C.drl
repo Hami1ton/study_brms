@@ -4,14 +4,14 @@ rule "Rule_Aを記録"
     when
         $data : ExecutedRules()
     then
-        $data.addRuleName("Rule_A");
+        $data.recordRuleName("Rule_A");
 end
 
 rule "Rule_Bを記録"
     when
         $data : ExecutedRules()
     then
-        $data.addRuleName("Rule_B");
+        $data.recordRuleName("Rule_B");
 end
 
 
@@ -19,5 +19,5 @@ rule "Rule_Cを記録"
     when
         $data : ExecutedRules()
     then
-        $data.addRuleName("Rule_C");
+        $data.recordRuleName("Rule_C");
 end
