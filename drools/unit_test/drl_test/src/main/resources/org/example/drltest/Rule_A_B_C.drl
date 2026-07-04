@@ -14,7 +14,6 @@ rule "Rule_Bを記録"
         $data.recordRuleName("Rule_B");
 end
 
-
 rule "Rule_Cを記録"
     when
         $data : ExecutedRules()
