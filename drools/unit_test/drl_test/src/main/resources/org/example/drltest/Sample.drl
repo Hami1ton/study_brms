@@ -1,0 +1,28 @@
+package org.example.drltest;
+
+import org.example.drltest.SampleData;
+
+rule "Rule_A"
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_A");
+        $data.setLatestRule("Rule_A");
+end
+
+rule "Rule_B"
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_B");
+        $data.setLatestRule("Rule_B");
+end
+
+
+rule "Rule_C"
+    when
+        $data : SampleData()
+    then
+        $data.addRuleName("Rule_C");
+        $data.setLatestRule("Rule_C");
+end
