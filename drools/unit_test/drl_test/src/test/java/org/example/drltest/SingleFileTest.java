@@ -2,6 +2,8 @@ package org.example.drltest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieFileSystem;
@@ -35,7 +37,7 @@ public class SingleFileTest {
             kieSession.fireAllRules();
 
             // assert
-            assertEquals(3, data.getExecutedRules().size()); 
+            assertEquals(Arrays.asList("Rule_A", "Rule_B", "Rule_C"), data.getExecutedRules());
 
         } finally {
             kieSession.dispose();
