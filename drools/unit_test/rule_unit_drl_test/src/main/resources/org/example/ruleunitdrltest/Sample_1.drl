@@ -1,0 +1,11 @@
+package org.example.ruleunitdrltest;
+
+unit SampleRuleUnit;
+
+rule "Rule_A_2"
+    when
+        $data : /sampleDatas
+    then
+        $data.addRuleName("Rule_A");
+        $data.setLatestRule("Rule_A");
+end
