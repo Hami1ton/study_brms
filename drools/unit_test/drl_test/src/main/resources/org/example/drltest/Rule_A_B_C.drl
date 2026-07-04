@@ -2,14 +2,14 @@ package org.example.drltest;
 
 rule "Rule_Aを記録"
     when
-        $data : SampleData()
+        $data : ExecutedRules()
     then
         $data.addRuleName("Rule_A");
 end
 
 rule "Rule_Bを記録"
     when
-        $data : SampleData()
+        $data : ExecutedRules()
     then
         $data.addRuleName("Rule_B");
 end
@@ -17,7 +17,7 @@ end
 
 rule "Rule_Cを記録"
     when
-        $data : SampleData()
+        $data : ExecutedRules()
     then
         $data.addRuleName("Rule_C");
 end

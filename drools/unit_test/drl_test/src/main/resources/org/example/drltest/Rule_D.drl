@@ -2,7 +2,7 @@ package org.example.drltest;
 
 rule "Rule_Dを記録"
     when
-        $data : SampleData()
+        $data : ExecutedRules()
     then
         $data.addRuleName("Rule_D");
 end

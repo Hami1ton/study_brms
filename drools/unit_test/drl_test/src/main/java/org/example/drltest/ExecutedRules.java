@@ -3,7 +3,7 @@ package org.example.drltest;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SampleData {
+public class ExecutedRules {
     // これまで実行されたルール名のリスト
     private List<String> executedRules = new ArrayList<>();
 

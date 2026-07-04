@@ -30,7 +30,7 @@ public class SingleFileTest {
         KieSession kieSession = kContainer.newKieSession();
 
         try {
-            var data = new SampleData();
+            var data = new ExecutedRules();
             kieSession.insert(data);
             kieSession.fireAllRules();
 

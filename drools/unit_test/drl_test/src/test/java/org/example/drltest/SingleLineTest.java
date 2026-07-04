@@ -37,7 +37,7 @@ public class SingleLineTest {
 
     @Test
     public void test_指定したルール名のみ実行() {
-        var data = new SampleData();
+        var data = new ExecutedRules();
         kieSession.insert(data);
 
         // 「Rule_Aを記録」のみを実行する
