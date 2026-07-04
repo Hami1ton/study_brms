@@ -1,7 +1,5 @@
 package org.example.drltest;
 
-import org.example.drltest.SampleData;
-
 rule "Rule_A"
     when
         $data : SampleData()
