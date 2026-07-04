@@ -2,7 +2,7 @@ package org.example.drltest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
+import java.util.Set;
 
 import org.drools.core.base.RuleNameEqualsAgendaFilter;
 import org.junit.jupiter.api.AfterEach;
@@ -44,6 +44,6 @@ public class SingleLineTest {
         kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Rule_Aを記録" ) );
 
         // assert
-        assertEquals(Arrays.asList("Rule_A"), data.getExecutedRules());
+        assertEquals(Set.of("Rule_A"), data.getExecutedRules());
     }
 }

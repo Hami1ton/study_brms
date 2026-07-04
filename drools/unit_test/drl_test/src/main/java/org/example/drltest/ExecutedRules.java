@@ -1,17 +1,17 @@
 package org.example.drltest;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ExecutedRules {
     // これまで実行されたルール名のリスト
-    private List<String> result = new ArrayList<>();
+    private Set<String> result = new HashSet<>();
 
     public void recordRuleName(String ruleName) {
         this.result.add(ruleName);
     }
 
-    public List<String> getExecutedRules() {
+    public Set<String> getExecutedRules() {
         return result;
     }
     
