@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Set;
 
 import org.drools.core.base.RuleNameEqualsAgendaFilter;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -18,32 +16,25 @@ public class SingleLineTest {
 
     static final Logger log = LoggerFactory.getLogger(SingleLineTest.class);
 
-    private KieContainer kieContainer;
-    private KieSession kieSession;
-
-    @BeforeEach
-    public void setup() {
+    @Test
+    public void test_指定した単一ルールのみをテスト() {
         KieServices ks = KieServices.Factory.get();
-        kieContainer = ks.getKieClasspathContainer();
-        kieSession = kieContainer.newKieSession();
-    }
+        KieContainer kieContainer = ks.getKieClasspathContainer();
+        KieSession kieSession = kieContainer.newKieSession();
 
-    @AfterEach
-    public void cleanup() {
-        if (kieSession != null) {
+        try {
+            var data = new ExecutedRules();
+            kieSession.insert(data);
+
+            // 「Rule_Aを記録」のみを実行
+            kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Rule_Aを記録" ) );
+            kieSession.fireAllRules();
+
+            // assert
+            assertEquals(Set.of("Rule_A"), data.getExecutedRules());
+
+        } finally {
             kieSession.dispose();
         }
-    }
-
-    @Test
-    public void test_指定したルール名のみ実行() {
-        var data = new ExecutedRules();
-        kieSession.insert(data);
-
-        // 「Rule_Aを記録」のみを実行する
-        kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Rule_Aを記録" ) );
-
-        // assert
-        assertEquals(Set.of("Rule_A"), data.getExecutedRules());
     }
 }

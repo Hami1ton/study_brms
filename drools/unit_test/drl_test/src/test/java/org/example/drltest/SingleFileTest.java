@@ -17,14 +17,11 @@ public class SingleFileTest {
 
     static final Logger log = LoggerFactory.getLogger(SingleFileTest.class);
 
-    private KieServices ks = KieServices.Factory.get();
-
     @Test
-    public void test_指定したDRLファイルのみ実行() {
-        // 特定のDRLファイルのみをリソースとして追加
+    public void test_指定したDRLファイルのみをテスト() {
+        // テストしたいDRLファイル（1ファイルだけ）をクラスパスから読み込み、リソースとして追加
+        KieServices ks = KieServices.Factory.get();
         KieFileSystem kfs = ks.newKieFileSystem();
-
-        // テストしたいDRLファイル（1ファイルだけ）をクラスパスから読み込む
         kfs.write(ResourceFactory.newClassPathResource("org/example/drltest/Rule_A_B_C.drl"));
         ks.newKieBuilder(kfs).buildAll();
 
