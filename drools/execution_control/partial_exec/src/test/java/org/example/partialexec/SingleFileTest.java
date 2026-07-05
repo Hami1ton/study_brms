@@ -19,7 +19,7 @@ public class SingleFileTest {
 
     @Test
     public void test_指定したDRLファイルのみ動かす() {
-        // テストしたいDRLファイル（1ファイルだけ）をクラスパスから読み込み、リソースとして追加
+        // 動かしたいDRLファイル（1ファイルだけ）をクラスパスから読み込み、リソースとして追加
         KieServices ks = KieServices.Factory.get();
         KieFileSystem kfs = ks.newKieFileSystem();
         kfs.write(ResourceFactory.newClassPathResource("org/example/partialexec/Rule_A_B_C.drl"));

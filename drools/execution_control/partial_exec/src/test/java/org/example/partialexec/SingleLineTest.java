@@ -26,8 +26,8 @@ public class SingleLineTest {
             var data = new ExecutedRules();
             kieSession.insert(data);
 
-            // 「Rule_Aを記録」のみを実行
-            kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Rule_Aを記録" ) );
+            // 「Rule_A」のみを実行
+            kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Rule_A" ) );
 
             // assert
             assertEquals(Set.of("Rule_A"), data.getExecutedRules());

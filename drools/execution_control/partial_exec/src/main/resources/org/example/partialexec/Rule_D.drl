@@ -1,6 +1,6 @@
 package org.example.partialexec;
 
-rule "Rule_Dを記録"
+rule "Rule_D"
     when
         $data : ExecutedRules()
     then

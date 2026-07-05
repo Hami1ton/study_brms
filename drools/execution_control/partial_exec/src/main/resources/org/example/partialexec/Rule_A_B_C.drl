@@ -1,20 +1,20 @@
 package org.example.partialexec;
 
-rule "Rule_Aを記録"
+rule "Rule_A"
     when
         $data : ExecutedRules()
     then
         $data.recordRuleName("Rule_A");
 end
 
-rule "Rule_Bを記録"
+rule "Rule_B"
     when
         $data : ExecutedRules()
     then
         $data.recordRuleName("Rule_B");
 end
 
-rule "Rule_Cを記録"
+rule "Rule_C"
     when
         $data : ExecutedRules()
     then
